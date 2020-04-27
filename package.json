@@ -1,7 +1,7 @@
 {
   "name": "lopserveadmin",
   "version": "1.0.0",
-  "description": "Calendar App built with React, Redux and Webpack",
+  "description": "lopserveAdmin App built with React, Redux and Webpack",
   "main": "index.js",
   "scripts": {
     "test": "jest",
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ocheben/Calendar.git"
+    "url": "git+https://github.com/Ocheben/lopserveAdmin.git"
   },
   "author": "Oche Onoja",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Ocheben/Calendar/issues"
+    "url": "https://github.com/Ocheben/lopserveAdmin/issues"
   },
-  "homepage": "https://github.com/Ocheben/Calendar#readme",
+  "homepage": "https://github.com/Ocheben/lopserveAdmin#readme",
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
