@@ -34,7 +34,7 @@ const DefaultHeader = (props) => {
 
   const handleLogout = () => {
     // setstate(s => ({ ...s, anchorEl: null }));
-    // dispatch(logout());
+    dispatch(logout());
     history.push('/login');
   };
 

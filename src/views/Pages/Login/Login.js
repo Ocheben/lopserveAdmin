@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import {
-  Content, Input, SText, StyledButton, AtIcon, LockIcon, SImg
+  Content, Input, SText, StyledButton, AtIcon, LockIcon, SImg, PhoneIcon
 } from '../../../components';
 import logo from '../../../assets/img/logo.png';
 import './Login.css';
@@ -28,7 +28,7 @@ export const Login = (props) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (userInfo.isLoggedIn) history.push('/app');
+    if (userInfo.isLoggedIn) history.push('/vendors');
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -38,22 +38,24 @@ export const Login = (props) => {
   };
 
   const submit = async () => {
-    const { baseUrl, login: { method, path } } = APIS;
-    const url = `${baseUrl}${path}`;
-    const data = {
-      email, password
-    };
-    setLoading(true);
-    const response = await request(method, url, data);
-    if (response.meta && response.meta.status === 200) {
-      dispatch(login({ ...response.data, isLoggedin: true }));
-      dispatch(setAlert({ open: true, variant: 'info', message: 'Welcome!' }));
-      setLoading(false);
-      history.push('/app');
-    } else if (response.meta && response.meta.status === 404) {
-      dispatch(setAlert({ open: true, variant: 'error', message: 'Invalid email or password' }));
-    }
-    setLoading(false);
+    dispatch(login({ isLoggedin: true }));
+    history.push('/vendors');
+    // const { baseUrl, login: { method, path } } = APIS;
+    // const url = `${baseUrl}${path}`;
+    // const data = {
+    //   email, password
+    // };
+    // setLoading(true);
+    // const response = await request(method, url, data);
+    // if (response.meta && response.meta.status === 200) {
+    //   dispatch(login({ ...response.data, isLoggedin: true }));
+    //   dispatch(setAlert({ open: true, variant: 'info', message: 'Welcome!' }));
+    //   setLoading(false);
+    //   history.push('/app');
+    // } else if (response.meta && response.meta.status === 404) {
+    //   dispatch(setAlert({ open: true, variant: 'error', message: 'Invalid email or password' }));
+    // }
+    // setLoading(false);
   };
 
   return (
@@ -75,8 +77,8 @@ export const Login = (props) => {
         </Content>
         <Content width="90%" mobWidth="90%" height="30%" mobHeight="30%" flex justify="space-around" mobJustify="space-around">
           <Input
-            label="Email/Phone"
-            type="email"
+            label="Phone"
+            type="tel"
             variant="outlined"
             name="email"
             value={email}
@@ -84,7 +86,7 @@ export const Login = (props) => {
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <AtIcon color="#666666" size="16px" />
+                  <PhoneIcon color="#666666" size="16px" />
                 </InputAdornment>
               )
             }}
@@ -121,7 +123,7 @@ export const Login = (props) => {
             width="80%"
             style={{ color: '#ffffff' }}
             variant="contained"
-            onClick={() => history.push('/vendors')}
+            onClick={submit}
           >
             {loading ? <CircularProgress style={{ color: '#ffffff' }} size={24} /> : 'Sign In '}
           </StyledButton>

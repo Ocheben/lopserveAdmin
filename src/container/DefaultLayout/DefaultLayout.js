@@ -23,9 +23,9 @@ const DefaultLayout = (props) => {
   };
   const [state, setstate] = useState(initialState);
 
-  // useEffect(() => {
-  //   if (!userInfo.isLoggedIn) history.push('/login');
-  // }, []);
+  useEffect(() => {
+    if (!userInfo.isLoggedIn) history.push('/login');
+  }, []);
 
   // componentDidMount() {
   //   if (!this.props.userInfo.isLoggedin) {
